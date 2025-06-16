@@ -1,0 +1,29 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from scalar_fastapi import get_scalar_api_reference
+
+from app.api.router import master_router
+from app.core.exceptions import add_exception_handlers
+from app.database import events  # noqa: F401
+
+app = FastAPI(
+    title="Dajavshna",
+    docs_url=None,
+    redoc_url=None,
+    version="0.1.0",
+    contact={"Name": "Nika Tsereteli", "email": "ntsereteli19@gmail.com"},
+)
+
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"])
+
+app.include_router(master_router)
+
+
+add_exception_handlers(app)
+
+
+@app.get("/docs", include_in_schema=False)
+def get_scalar_docs():
+    return get_scalar_api_reference(
+        openapi_url=str(app.openapi_url), title="Dajavshna Api"
+    )

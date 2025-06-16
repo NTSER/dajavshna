@@ -1,0 +1,86 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+*.env
+
+# macOS
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Test / coverage outputs
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.cache
+pytest_cache/
+nosetests.xml
+test-results/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# pipenv / poetry
+Pipfile.lock
+poetry.lock
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+*.log
+logs/
+
+# Docker
+*.pid
+*.tar
+*.bak
+*.tmp
+
+# Static / media files
+staticfiles/
+media/
+
+# Local development databases
+*.sqlite3
+*.db
+
+# Ruff / flake8 / pylint
+ruff_cache/
+.flake8
+.pylintrc
+
+# AWS credentials
+*.pem
+
+# Optional: Node-related files if using frontend (e.g., React with FastAPI backend)
+node_modules/
+package-lock.json
+yarn.lock
