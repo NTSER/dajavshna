@@ -39,6 +39,10 @@ resource "aws_codebuild_project" "todo_app" {
       name  = "ECR_REPO_URL"
       value = aws_ecr_repository.todo_app.repository_url
     }
+    environment_variable {
+      name  = "REDIS_ECR_REPO_URL"
+      value = aws_ecr_repository.redis.repository_url
+    }
   }
 
   source {

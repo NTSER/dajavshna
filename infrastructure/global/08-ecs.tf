@@ -9,6 +9,7 @@ data "template_file" "todo_app" {
     database_name                 = aws_db_instance.todo_postgres.db_name
     postgres_username             = aws_db_instance.todo_postgres.username
     postgres_password             = "${data.aws_secretsmanager_secret.postgresql_password_secret.id}:rds_password::"
+    redis_ecr_repository          = aws_ecr_repository.redis.repository_url
   }
 }
 
