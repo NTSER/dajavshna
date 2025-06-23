@@ -21,26 +21,66 @@
     "cpu": 1,
     "environment": [
       {
-        "name": "DB_ADDRESS",
-        "value": "${database_address}"
-      },
-       {
-        "name": "DB_NAME",
-        "value": "${database_name}"
-      },
-      {
-        "name": "POSTGRES_USERNAME",
+        "name": "POSTGRES_USER",
         "value": "${postgres_username}"
       },
       {
-        "name": "ENV",
-        "value": "PROD"
+        "name": "POSTGRES_PASSWORD",
+        "value": "mypassword"
+      },
+      {
+        "name": "POSTGRES_DB",
+        "value": "${database_name}"
+      },
+      {
+        "name": "POSTGRES_SERVER",
+        "value": "${database_address}"
+      },
+      {
+        "name": "POSTGRES_PORT",
+        "value": "5432"
+      },
+      {
+        "name": "REDIS_HOST",
+        "value": "redis"
+      },
+      {
+        "name": "REDIS_PORT",
+        "value": "6379"
+      },
+      {
+        "name": "JWT_SECRET_KEY",
+        "value": "mysecretkey"
+      },
+      {
+        "name": "JWT_ALGORITHM",
+        "value": "HS256"
+      },
+      {
+        "name": "MAIL_USERNAME",
+        "value": "dajavshna9@gmail.com"
+      },
+      {
+        "name": "MAIL_PASSWORD",
+        "value": "rrte dnkk wkef wocv"
+      },
+      {
+        "name": "MAIL_FROM",
+        "value": "dajavshna9@gmail.com"
+      },
+      {
+        "name": "MAIL_FROM_NAME",
+        "value": "dajavshna9@gmail.com"
+      },
+      {
+        "name": "MAIL_SERVER",
+        "value": "smtp.gmail.com"
+      },
+      {
+        "name": "MAIL_PORT",
+        "value": "465"
       }
     ],
-    "secrets": [{
-      "name": "POSTGRES_PASSWORD",
-      "valueFrom": "${postgres_password}"
-    }],
     "ulimits": [
       {
         "name": "nofile",
@@ -51,5 +91,17 @@
     "mountPoints": [],
     "memory": 2048,
     "volumesFrom": []
+  },
+  {
+    "name": "redis",
+    "image": "redis:7-alpine",
+    "essential": false,
+    "portMappings": [
+      {
+        "containerPort": 6379,
+        "hostPort": 6379,
+        "protocol": "tcp"
+      }
+    ]
   }
 ]
