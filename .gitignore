@@ -84,3 +84,15 @@ ruff_cache/
 node_modules/
 package-lock.json
 yarn.lock
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.crash/
+.terraform/
+.terraform.lock.hcl
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.auto.tfvars
