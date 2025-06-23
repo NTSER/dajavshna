@@ -2,12 +2,16 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel
 
+import ssl
 from app.config import db_settings
+
+ssl_context = ssl.create_default_context()
 
 
 engine = create_async_engine(
     url=db_settings.POSTGRES_URL,
     echo=True,
+    connect_args={"ssl": ssl_context},
 )
 
 

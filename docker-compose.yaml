@@ -3,10 +3,10 @@ services:
     build:
       context: .
     expose:
-      - 8000
-    command: ["fastapi", "run", "--port", "8000"]
+      - 5000
+    command: ["fastapi", "run", "--port", "5000"]
     ports:
-      - "8000:8000"
+      - "5000:5000"
     env_file: .env
     volumes:
       - api_volume:/app/staticfiles
