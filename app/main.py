@@ -22,6 +22,11 @@ app.include_router(master_router)
 add_exception_handlers(app)
 
 
+@app.get("/healthcheck")
+def get_healthcheck():
+    return {"detail": "healthy"}
+
+
 @app.get("/docs", include_in_schema=False)
 def get_scalar_docs():
     return get_scalar_api_reference(
