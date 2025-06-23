@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - echo Logging Docker Hub...
+      - echo Logging into Docker Hub...
       - docker login --username $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -21,12 +21,23 @@ phases:
       - docker build -t $IMAGE_NAME:latest .
       - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:latest
       - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:$IMAGE_TAG
+
+      # Pull Redis 7 Alpine and tag for ECR
+      - echo Pulling Redis 7 Alpine...
+      - docker pull redis:7-alpine
+      - docker tag redis:7-alpine $REDIS_ECR_REPO_URL:7-alpine
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker image...
+      - echo Pushing the Docker images...
+
+      # Push your app image
       - docker push $ECR_REPO_URL:latest
       - docker push $ECR_REPO_URL:$IMAGE_TAG
+
+      # Push Redis image to ECR
+      - docker push $REDIS_ECR_REPO_URL:7-alpine
+
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $ECR_REPO_URL:$IMAGE_TAG > imagedefinitions.json
 artifacts:

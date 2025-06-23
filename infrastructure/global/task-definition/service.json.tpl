@@ -94,7 +94,7 @@
   },
   {
     "name": "redis",
-    "image": "redis:7-alpine",
+    "image": "${redis_ecr_repository}:7-alpine",
     "essential": false,
     "portMappings": [
       {
@@ -102,6 +102,16 @@
         "hostPort": 6379,
         "protocol": "tcp"
       }
-    ]
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "${aws_cloudwatch_log_group_name}-redis",
+        "awslogs-group": "${aws_cloudwatch_log_group_name}"
+      }
+    },
+    "memory": 256,
+    "cpu": 0
   }
 ]
