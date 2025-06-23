@@ -26,7 +26,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "value": "mypassword"
+        "value": "${postgres_password}"
       },
       {
         "name": "POSTGRES_DB",
