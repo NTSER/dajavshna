@@ -25,10 +25,6 @@
         "value": "${postgres_username}"
       },
       {
-        "name": "POSTGRES_PASSWORD",
-        "value": "${postgres_password}"
-      },
-      {
         "name": "POSTGRES_DB",
         "value": "${database_name}"
       },
@@ -81,6 +77,10 @@
         "value": "465"
       }
     ],
+    "secrets": [{
+      "name": "POSTGRES_PASSWORD",
+      "valueFrom": "${postgres_password}"
+    }],
     "ulimits": [
       {
         "name": "nofile",

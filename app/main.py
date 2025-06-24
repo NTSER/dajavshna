@@ -22,7 +22,7 @@ app.include_router(master_router)
 add_exception_handlers(app)
 
 
-@app.get("/healthcheck")
+@app.get("/healthcheck", include_in_schema=False)
 def get_healthcheck():
     return {"detail": "healthy"}
 
