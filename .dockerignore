@@ -84,9 +84,4 @@ docker-compose*
 *.key
 
 #---
-migrations
-alembic.ini
-
-
-#---
 infrastructure
