@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["fastapi", "run", "--port", "5000"]
+CMD ["sh", "-c", "alembic upgrade head && fastapi run --port 5000"]

@@ -1,21 +1,10 @@
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from scalar_fastapi import get_scalar_api_reference
 
-from app.alembic_runner import run_migrations
 from app.api.router import master_router
 from app.core.exceptions import add_exception_handlers
 from app.database import events  # noqa: F401
-import asyncio
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    await asyncio.to_thread(run_migrations)
-    yield
-
 
 app = FastAPI(
     title="Dajavshna",
@@ -23,7 +12,6 @@ app = FastAPI(
     redoc_url=None,
     version="0.1.0",
     contact={"Name": "Nika Tsereteli", "email": "ntsereteli19@gmail.com"},
-    lifespan=lifespan,
 )
 
 
