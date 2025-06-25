@@ -18,14 +18,14 @@ class NotificationService:
     async def send_email(
         self, recipients: list[EmailStr], subject: str, body: str
     ) -> None:
-        # self.tasks.add_task(
-        await self.fastmail.send_message(
+        self.tasks.add_task(
+            self.fastmail.send_message,
             message=MessageSchema(
                 recipients=recipients,
                 subject=subject,
                 body=body,
                 subtype=MessageType.plain,
-            )
+            ),
         )
 
     async def send_email_with_template(
@@ -35,8 +35,8 @@ class NotificationService:
         context: dict,
         template_name: str,
     ) -> None:
-        # self.tasks.add_task(
-        await self.fastmail.send_message(
+        self.tasks.add_task(
+            self.fastmail.send_message,
             message=MessageSchema(
                 recipients=recipients,
                 subject=subject,

@@ -127,7 +127,7 @@ class Seller(UserBase, table=True):
     id: UUID = Field(
         sa_column=Column(postgresql.UUID, primary_key=True, default=uuid4),
     )
-    email_verified: bool = Field(default=False)
+    email_verified: bool = Field(default=True)
     venues: list[Venue] = Relationship(
         back_populates="seller", sa_relationship_kwargs={"lazy": "selectin"}
     )
@@ -140,7 +140,7 @@ class Consumer(UserBase, table=True):
     id: UUID = Field(
         sa_column=Column(postgresql.UUID, primary_key=True, default=uuid4),
     )
-    email_verified: bool = Field(default=False)
+    email_verified: bool = Field(default=True)
     orders: list[Order] = Relationship(
         back_populates="consumer", sa_relationship_kwargs={"lazy": "selectin"}
     )
