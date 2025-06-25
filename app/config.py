@@ -49,8 +49,8 @@ class NotificationSettings(BaseSettings):
     MAIL_FROM_NAME: str
     MAIL_SERVER: str
     MAIL_PORT: int
-    MAIL_STARTTLS: bool = False
-    MAIL_SSL_TLS: bool = True
+    MAIL_STARTTLS: bool = True
+    MAIL_SSL_TLS: bool = False
     USE_CREDENTIALS: bool = True
     VALIDATE_CERTS: bool = True
 

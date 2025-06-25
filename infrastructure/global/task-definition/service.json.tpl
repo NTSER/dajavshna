@@ -74,7 +74,7 @@
       },
       {
         "name": "MAIL_PORT",
-        "value": "465"
+        "value": "587"
       }
     ],
     "secrets": [{
